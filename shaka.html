@@ -7,7 +7,7 @@
     <script>
 
 const manifestUri =
-    'https://storage.googleapis.com/shaka-demo-assets/angel-one/dash.mpd';
+    'https://playready-content.s3.us-west-2.amazonaws.com/Pushpa/Bento4_Contents/PR_SingleKey-devContent/stream.mpd';
 
 function initApp() {
   // Install built-in polyfills to patch browser incompatibilities.
@@ -27,6 +27,24 @@ async function initPlayer() {
   // Create a Player instance.
   const video = document.getElementById('video');
   const player = new shaka.Player();
+
+  player.configure({
+    drm: {
+        servers: {
+        'com.microsoft.playready.recommendation': 'https://hms-license-proxy.dev.expressplay.com/playready/RightsManager.asmx'
+        },
+        
+    advanced: {
+      'com.microsoft.playready.recommendation': {
+        'headers': {
+          'ExpressPlayToken': 'CAA3u2UTGCMAJDJkZDE3OWIyLTM1OGItNDQ1Yy04NDhlLTIzMmUyMjA2NzA2YwAAAJDXqyuuK3fxZnPv9TfK8xhRAAujGFq_d4co3v8ePOnFHaJmyFWysYqPSufYyb1fMDUCPAQ7YRiafQnJKMs2fpnQj4F3NZBLda663JBMStQyjvvSJq3KUaVdiLcTzUb0gCctG-VzugBqFQpUPSjcG2LooFjg9qyr7vaZw984JXVJgYAUUwwCT9dGZWszsdUg5aK1shv_mpQ5wab74mFdmVGGShkAUg'
+        }
+      }
+    }
+
+    }
+    });
+
   await player.attach(video);
 
   // Attach player to the window to make it easy to access in the JS console.
