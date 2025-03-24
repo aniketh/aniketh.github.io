@@ -27,17 +27,17 @@ async function initPlayer() {
   // Create a Player instance.
   const video = document.getElementById('video');
   const player = new shaka.Player();
-
+  
   player.configure({
     drm: {
         servers: {
-        'com.microsoft.playready.recommendation': 'https://hms-license-proxy.dev.expressplay.com/playready/RightsManager.asmx'
+        'com.microsoft.playready': 'https://pr.service.expressplay.com/playready/RightsManager.asmx'
         },
         
     advanced: {
-      'com.microsoft.playready.recommendation': {
+      'com.microsoft.playready': {
         'headers': {
-          'ExpressPlayToken': 'CAA3u2UTGCMAJDJkZDE3OWIyLTM1OGItNDQ1Yy04NDhlLTIzMmUyMjA2NzA2YwAAAJDXqyuuK3fxZnPv9TfK8xhRAAujGFq_d4co3v8ePOnFHaJmyFWysYqPSufYyb1fMDUCPAQ7YRiafQnJKMs2fpnQj4F3NZBLda663JBMStQyjvvSJq3KUaVdiLcTzUb0gCctG-VzugBqFQpUPSjcG2LooFjg9qyr7vaZw984JXVJgYAUUwwCT9dGZWszsdUg5aK1shv_mpQ5wab74mFdmVGGShkAUg'
+          'ExpressPlayToken': 'CAAqVaU0N5EAJDI2NzUwMjgyLTI2M2ItNGRlZi1iZGQzLTZiNzdiNjM4ZDNhZAAAAJABB6oBJLCbOq28XfItFXVoYL1X3UuVUpJ0y55-9UyyVjz58_UDa2AhxNZbSDOiUbQGbo7QT1p_ujUzQeT4e-g3PRrOF7ZDUPEKq9mN3hlCQEdWpj_pNyRzlBPn4uRl8O4jhWHwSsu28-MuqKPTKVEcUnPfDaqvusttrOatn8dE79HisZZrvmtPoaWXYqhIRTnGxrCNEw2cYp6eVpnlC8JaFClshQ'
         }
       }
     }
